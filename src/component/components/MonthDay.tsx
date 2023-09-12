@@ -1,39 +1,45 @@
-import { Box, styled } from '@material-ui/core'
-import moment from 'moment'
+/**
+ * Copyright (c) 2012-present Sedicii Innovations Ltd.
+ *
+ * All rights reserved.
+ */
+import { Box, Typography, styled } from '@material-ui/core'
 import React, { PropsWithChildren } from 'react'
 import { WEEK_CELL_WIDTH } from './View'
 
-export interface EventTask {
-    title: string
-    time: string
-    timestamp: number
-}
-
 export interface MonthDayProps {
-    day: number,
-    inactiveDay?: boolean
-    classes?: any
+  day: number
+  month?: string
+  inactiveDay?: boolean
+  classes?: any
+  isToday?: boolean
 }
 
-const StyledBox = styled(Box)({
+export function MonthDay(props: PropsWithChildren<MonthDayProps>) {
+  const {
+    day,
+    classes,
+    month,
+    inactiveDay,
+  } = props
+
+  const StyledBox = styled(Box)({
     width: WEEK_CELL_WIDTH,
     height: '100%',
     boxSizing: 'border-box',
     flexGrow: 1,
     flexDirection: 'column',
     display: 'flex',
-    border: '1px solid black'
-})
+    border: '1px solid gray',
+    borderColor: 'rgba(10, 10, 10, 0.10)',
+    backgroundColor: inactiveDay ? 'rgba(200, 200, 200, 0.10)' : 'transparent',
+    overflow: 'auto',
+  })
 
-export function MonthDay(props: PropsWithChildren<MonthDayProps>) {
-    const {
-        day,
-        classes,
-        inactiveDay = true
-    } = props
+  const dayText = `${ day }${ month ? ` ${ month }` : '' }`
 
-    return <StyledBox className={ inactiveDay ? classes?.InactiveDayMonth : classes?.DayMonth }>
-        <span> { day } </span>
-        { props.children }
-    </StyledBox>
+  return <StyledBox className={ inactiveDay ? classes?.InactiveDayMonth : classes?.DayMonth }>
+    <Typography align='center'> { dayText } </Typography>
+    { props.children }
+  </StyledBox>
 }

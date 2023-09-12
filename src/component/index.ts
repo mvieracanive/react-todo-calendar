@@ -1,6 +1,11 @@
-import { TodoCalendar } from "./TodoCalendar"
+/**
+ * Copyright (c) 2012-present Sedicii Innovations Ltd.
+ *
+ * All rights reserved.
+ */
+import { EventCalendar } from './EventCalendar'
 
-export type { EventPorps, TodoCalendarProps } from "./TodoCalendar"
-export { TodoCalendar } from "./TodoCalendar"
+export type { EventProps, ViewProps } from './EventCalendar'
+export { EventCalendar } from './EventCalendar'
 
-export default TodoCalendar
+export default EventCalendar

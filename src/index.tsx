@@ -1,6 +1,6 @@
 import React from "react";
 import reactDom from "react-dom";
-import { TodoCalendar } from "./component";
+import { EventCalendar } from "./component";
 import { Box, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -20,7 +20,7 @@ function component() {
   
   const App = () =>{
       return <Box width={ '100%' } height={ '600px' } boxSizing={ 'border-box'}>
-            <TodoCalendar 
+            <EventCalendar 
                 eventList={ [ { title: "Tarea 1", startDate: new Date() } ] }
                 view = {{ type: 'month', month: 8, year: 2023 }}
                 classes={ useStyles() }
